@@ -240,7 +240,7 @@ function show(html,col){app.style.paddingBottom=html.indexOf('class="cover"')>=0
 function cover(){const started=st.step>=0;
  show(`<div class="cover"><div class="fan"><img src="th/W4.jpg" alt=""><img src="th/J6.jpg" alt=""><img src="th/P4.jpg" alt=""></div>
  <span class="kick">собери свой ролик</span><h1>Супер<em>приз</em></h1>
- <p class="lead">Это конструктор ролика под «Суперприз». Выбирай картинки, которые нравятся, и по ним соберём клип. Правильных ответов нет.</p>
+ <p class="lead">Это конструктор ролика под «Суперприз». Выбирай картинки, которые нравятся, и по ним соберём ролик. Правильных ответов нет.</p>
  <div class="steps"><div><b>1</b>${N} шагов, минуты три</div><div><b>2</b>Тапни картинку, чтобы открыть крупно</div><div><b>3</b>В конце доска с твоим выбором</div></div>
  <button class="btn alt" data-act="start">${started?'Продолжить':'Собрать ролик'}</button>${started?'<button class="link" data-act="reset">Начать сначала</button>':''}</div>`)}
 function chapter(i){st.step=i;save();const c=CH[i],[p,n,t]=st.a[i];
