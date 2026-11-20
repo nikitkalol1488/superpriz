@@ -168,6 +168,8 @@ pre.tz{white-space:pre-wrap;word-break:break-word;font:500 13.5px/1.45 ui-monosp
 <div id="view"></div>
 <script>
 'use strict';
+const BUILD='8';
+fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{t=t.trim();if(/^\d+$/.test(t)&&t!==BUILD&&location.search.indexOf('v='+t)<0)location.replace(location.pathname+'?v='+t+location.hash)}).catch(()=>{});
 const PARTS=['Каким будет ролик','Как он выглядит','Ты в кадре','Главное'];
 const COL=['#FF2E93','#2434FF','#8B2CF5','#E5121D'], DARK='#1b0a14';
 const CH=[
