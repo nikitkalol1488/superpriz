@@ -33,11 +33,13 @@ h1,h2,.dela{font-family:Dela,system-ui,sans-serif;font-weight:400;letter-spacing
 /* обложка */
 .cover{min-height:calc(100vh - 60px);display:flex;flex-direction:column;justify-content:center;color:#fff}
 .sheet{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;box-shadow:0 14px 30px rgba(60,0,30,.35)}
-.fan{position:relative;height:clamp(150px,45vw,205px);margin:0 0 2px}
-.fan img{position:absolute;left:50%;bottom:0;width:29%;aspect-ratio:9/16;object-fit:cover;border:5px solid #fff;border-radius:14px;box-shadow:0 12px 24px rgba(60,0,30,.45);transform-origin:50% 120%;animation:fan .8s cubic-bezier(.2,1.4,.4,1) both}
-.fan img:nth-child(1){transform:translateX(-50%) rotate(-17deg);animation-delay:.1s}
-.fan img:nth-child(2){transform:translateX(-50%) rotate(17deg);animation-delay:.2s}
-.fan img:nth-child(3){transform:translateX(-50%) rotate(0deg) translateY(-12px);animation-delay:.32s;z-index:2}
+.fan{position:relative;height:clamp(150px,46vw,210px);margin:0 0 26px}
+.fan img{position:absolute;left:50%;bottom:0;width:25%;aspect-ratio:9/16;object-fit:cover;border:5px solid #fff;border-radius:14px;box-shadow:0 12px 24px rgba(60,0,30,.45);transform-origin:50% 150%;animation:fan .8s cubic-bezier(.2,1.4,.4,1) both}
+.fan img:nth-child(1){transform:translateX(-50%) rotate(-32deg);animation-delay:.05s;z-index:1}
+.fan img:nth-child(2){transform:translateX(-50%) rotate(-16deg);animation-delay:.14s;z-index:2}
+.fan img:nth-child(3){transform:translateX(-50%) rotate(16deg);animation-delay:.23s;z-index:2}
+.fan img:nth-child(4){transform:translateX(-50%) rotate(32deg);animation-delay:.32s;z-index:1}
+.fan img:nth-child(5){transform:translateX(-50%) rotate(0deg) translateY(-10px);animation-delay:.42s;z-index:3}
 @keyframes fan{from{opacity:0;transform:translateX(-50%) rotate(0deg) translateY(60%) scale(.7)}}
 .kick{font:800 12px/1 system-ui;letter-spacing:.18em;text-transform:uppercase;color:var(--ch)}
 .cover .kick{color:#fff;opacity:.92;margin-top:14px;display:block}
@@ -160,7 +162,7 @@ pre.tz{white-space:pre-wrap;word-break:break-word;font:500 13.5px/1.45 ui-monosp
 </style>
 </head>
 <body>
-<div id="decor"><i class="rb r1"></i><i class="sp" style="left:8%;top:9%;--s:30px;--d:2.6s;--w:-0.2s"></i><i class="sp" style="left:84%;top:6%;--s:20px;--d:3.1s;--w:-1.1s"></i><i class="sp" style="left:92%;top:31%;--s:34px;--d:2.2s;--w:-0.7s"></i><i class="sp" style="left:4%;top:47%;--s:18px;--d:3.4s;--w:-1.9s"></i><i class="sp" style="left:78%;top:62%;--s:26px;--d:2.8s;--w:-0.4s"></i><i class="sp" style="left:14%;top:78%;--s:36px;--d:2.5s;--w:-1.4s"></i><i class="sp" style="left:90%;top:88%;--s:22px;--d:3.0s;--w:-2.2s"></i><i class="sp" style="left:46%;top:3%;--s:14px;--d:2.1s;--w:-0.9s"></i><i class="sp" style="left:55%;top:93%;--s:16px;--d:3.3s;--w:-0.1s"></i></div>
+<div id="decor"><i class="rb r1"></i><i class="sp" style="left:3%;top:9%;--s:30px;--d:2.6s;--w:-0.2s"></i><i class="sp" style="left:88%;top:5%;--s:20px;--d:3.1s;--w:-1.1s"></i><i class="sp" style="left:93%;top:30%;--s:34px;--d:2.2s;--w:-0.7s"></i><i class="sp" style="left:1%;top:47%;--s:18px;--d:3.4s;--w:-1.9s"></i><i class="sp" style="left:94%;top:62%;--s:26px;--d:2.8s;--w:-0.4s"></i><i class="sp" style="left:1%;top:81%;--s:30px;--d:2.5s;--w:-1.4s"></i><i class="sp" style="left:92%;top:91%;--s:22px;--d:3.0s;--w:-2.2s"></i><i class="sp" style="left:46%;top:2%;--s:14px;--d:2.1s;--w:-0.9s"></i><i class="sp" style="left:60%;top:97%;--s:16px;--d:3.3s;--w:-0.1s"></i></div>
 <div id="app"><div class="screen"><div class="sheet"><h2 class="dela">Суперприз</h2><p style="margin-top:10px;line-height:1.4">Страница загружается. Если она так и осталась пустой, открой ссылку в обычном браузере.</p></div></div></div>
 <div id="dock" class="dock"></div>
 <div id="view"></div>
@@ -238,10 +240,10 @@ function brief(){const L=['ВЫБОР ДЛЯ РОЛИКА «СУПЕРПРИЗ»
 /* экраны */
 function show(html,col){app.style.paddingBottom=html.indexOf('class="cover"')>=0?'24px':'';document.documentElement.style.setProperty('--ch',col||COL[0]);app.innerHTML='<div class="screen">'+html+'</div>';dockEl.innerHTML='';window.scrollTo(0,0)}
 function cover(){const started=st.step>=0;
- show(`<div class="cover"><div class="fan"><img src="th/W4.jpg" alt=""><img src="th/J6.jpg" alt=""><img src="th/P4.jpg" alt=""></div>
+ show(`<div class="cover"><div class="fan"><img src="th/W4.jpg" alt=""><img src="th/F2.jpg" alt=""><img src="th/J6.jpg" alt=""><img src="th/B5.jpg" alt=""><img src="th/P4.jpg" alt=""></div>
  <span class="kick">собери свой ролик</span><h1>Супер<em>приз</em></h1>
- <p class="lead">Это конструктор ролика под «Суперприз». Выбирай картинки, которые нравятся, и по ним соберём ролик. Правильных ответов нет.</p>
- <div class="steps"><div><b>1</b>${N} шагов, минуты три</div><div><b>2</b>Тапни картинку, чтобы открыть крупно</div><div><b>3</b>В конце доска с твоим выбором</div></div>
+ <p class="lead">Это конструктор ролика под «Суперприз». Выбирай картинки, которые нравятся, и по ним соберём тебе красивый ролик. Правильных ответов нет: выбирай то, что нравится.</p>
+ <div class="steps"><div><b>1</b>${N} шагов, минуты три-четыре</div><div><b>2</b>Тапни картинку, чтобы открыть крупно</div><div><b>3</b>Где-то можно взять несколько и дописать своё</div><div><b>4</b>В конце будет доска с твоим выбором</div></div>
  <button class="btn alt" data-act="start">${started?'Продолжить':'Собрать ролик'}</button>${started?'<button class="link" data-act="reset">Начать сначала</button>':''}</div>`)}
 function chapter(i){st.step=i;save();const c=CH[i],[p,n,t]=st.a[i];
  const dots=CH.map((_,j)=>`<i class="${j===i?'now':done(j)?'on':''}"></i>`).join('');
