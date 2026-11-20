@@ -169,60 +169,59 @@ pre.tz{white-space:pre-wrap;word-break:break-word;font:500 13.5px/1.45 ui-monosp
 const PARTS=['Каким будет ролик','Как он выглядит','Ты в кадре','Главное'];
 const COL=['#FF2E93','#2434FF','#8B2CF5','#E5121D'], DARK='#1b0a14';
 const CH=[
- {k:'Техника',part:0,t:'Живая съёмка или мультик?',q:'Каким ты видишь ролик: как кино или как мультфильм.',ask:'Есть клип или мультик, на который это должно быть похоже?',max:2,cards:[
+ {k:'Техника',id:'te',part:0,t:'Живая съёмка или мультик?',q:'Каким ты видишь ролик: как кино или как мультфильм.',ask:'Есть клип или мультик, на который это должно быть похоже?',max:2,cards:[
   ['A1','Живая съёмка','гиперреализм, как дорогой клип'],['A2','3D-мультфильм','кукольный глянец, как большая анимация'],['A3','Аниме 90-х','рисованное, большие глаза, зерно плёнки'],['A4','Пластилин','лепка руками, видны отпечатки'],
   ['A5','Бумажная вырезка','слои бумаги, рваные края'],['A6','Мультсериал 2000-х','плоский рисунок, толстый контур'],['A7','Мультфильм 30-х','глаза-пуговицы, перчатки, гибкие руки'],['A8','Поп-арт','комикс, растровые точки']]},
- {k:'Эпоха',part:0,t:'В какой эпохе живёт ролик?',q:'Декорации, костюм и приз меняются вместе с эпохой.',ask:'Что из этой эпохи обязательно должно быть в кадре?',max:2,cards:[
+ {k:'Эпоха',id:'er',part:0,t:'В какой эпохе живёт ролик?',q:'Декорации, костюм и приз меняются вместе с эпохой.',ask:'Что из этой эпохи обязательно должно быть в кадре?',max:2,cards:[
   ['B1','Барокко','золото, красный бархат, свет как на картинах'],['B2','Рококо','лепнина, банты, цветы, конфетные цвета'],['B3','Ар-деко','чёрный лак, золото, геометрия двадцатых'],['B4','Космические 60-е','белый пластик, круглые окна, оранжевый'],
   ['B5','Диско 70-х','зеркальные шары, светящийся пол, блёстки'],['B6','Двухтысячные','хром, стразы, надувная мебель, раскладушки'],['B7','Старые деньги','мрамор, дерево, теннисный клуб'],['B8','Готический гламур','чёрное кружево, свечи, рубин']]},
- {k:'Мир',part:0,t:'Где всё происходит?',q:'Место, похожее на сон: всё настоящее, кроме одной вещи.',ask:'Что бы ты добавила в этот мир?',max:4,cards:[
+ {k:'Мир',id:'wo',part:0,t:'Где всё происходит?',q:'Место, похожее на сон: всё настоящее, кроме одной вещи.',ask:'Что бы ты добавила в этот мир?',max:4,cards:[
   ['W1','Хранилище','бриллианты и жемчуг лежат дюнами'],['W2','Бассейн с бриллиантами','вилла, полдень, фламинго'],['W3','Шкатулка изнутри','красный бархат, кольца размером с арку'],['W4','Затопленный театр','бирюзовая вода, лебеди, гора подарков'],
   ['W5','Карусель в облаках','закат, живые белые лошади'],['W6','Сад гигантских цветов','попугаи, люстра прямо на ветке'],['W7','Автомат с призами','ты внутри, сверху спускается клешня'],['W8','Кольцо на озере','кольцо размером с дом, белые лошади']]},
- {k:'Цвет',part:1,t:'Какие цвета твои?',q:'Кадр один и тот же, меняется только цвет.',ask:'Какого цвета в ролике точно не должно быть?',max:2,cards:[
+ {k:'Цвет',id:'co',part:1,t:'Какие цвета твои?',q:'Кадр один и тот же, меняется только цвет.',ask:'Какого цвета в ролике точно не должно быть?',max:2,cards:[
   ['C1','Розовый и хром','',['#FF2E93','#FF8CC6','#D9DEE5','#8E99A8','#FFFFFF']],['C2','Алый и фуксия','',['#E5121D','#FF1E8E','#B00E5C','#FF6FA8','#FFFFFF']],['C3','Лайм и фуксия','',['#B6F500','#FF1E8E','#7AC900','#C2166F','#FFFFFF']],
   ['C4','Синий и серебро','',['#1A2BFF','#0A14B8','#C9D0DA','#8A94A6','#FFFFFF']],['C5','Чёрный и золото','',['#0B0B0B','#E3B23C','#B8860B','#FFE08A','#FFFFFF']],['C6','Молочный и красный','',['#F4F1EC','#E5121D','#D8D2C8','#FFFFFF','#B00E18']]]},
- {k:'Свет',part:1,t:'Какой свет?',q:'Кадр один и тот же, меняется только свет.',ask:'Свет резкий или мягкий? Можно своими словами.',max:1,cards:[
+ {k:'Свет',id:'li',part:1,t:'Какой свет?',q:'Кадр один и тот же, меняется только свет.',ask:'Свет резкий или мягкий? Можно своими словами.',max:1,cards:[
   ['D1','Жёсткое солнце','резкие тени от окна'],['D2','Золотой час','низкий тёплый свет сбоку'],['D3','Ночной неон','розовые и синие трубки, отражения']]},
- {k:'Плотность',part:1,t:'Сколько всего в кадре?',q:'От пустого зала до комнаты, набитой до потолка.',ask:'Какие предметы хочешь видеть вокруг себя?',max:1,cards:[
+ {k:'Плотность',id:'de',part:1,t:'Сколько всего в кадре?',q:'От пустого зала до комнаты, набитой до потолка.',ask:'Какие предметы хочешь видеть вокруг себя?',max:1,cards:[
   ['E1','Пусто','только ты и главный предмет'],['E2','Средне','десяток вещей вокруг'],['E3','До потолка','сотни предметов, глаз не успевает']]},
- {k:'Шрифт',part:1,t:'Каким шрифтом слова песни?',q:'Если в ролике будут титры или строчки из трека.',ask:'Слова в кадре нужны или лучше без них?',max:1,fonts:1,opts:['Жирный поп','Глянцевый журнал','Плакат','Современный','От руки','Афиша'],fo:[['Dela',26,400,'#FF2E93'],['PlayfairI',31,800,'#14090f'],['RubikMono',21,400,'#E5121D'],['Unbounded',22,800,'#2434FF'],['Caveat',40,700,'#8B2CF5'],['Oswald',33,700,'#0a8f5b']]},
- {k:'Образ',part:2,t:'Во что ты одета?',q:'Образы новые. Лица нет нарочно: выбираем только наряд.',ask:'Что поменять в этом образе?',max:3,cards:[
+ {k:'Образ',id:'lo',part:2,t:'Во что ты одета?',q:'Образы новые. Лица нет нарочно: выбираем только наряд.',ask:'Что поменять в этом образе?',max:3,cards:[
   ['F1','Платье-облако','слои тюля и огромный бант'],['F2','Алый лак','виниловый тренч и лаковые сапоги'],['F3','Кристальная сетка','мини, всё в бликах'],['F4','Белый смокинг','оверсайз, широкие брюки'],['F5','Перья','мини из перьев и длинные перчатки'],
   ['F6','Кожа и стразы','куртка, мини, грубые ботинки'],['F7','Велюр 2000-х','спортивный костюм со стразами'],['F8','Королева конкурса','атлас в пол, лента и корона'],['F9','Серебряный комбинезон','зеркальный, космический']]},
- {k:'Украшения',part:2,t:'Из чего украшения?',q:'Один и тот же кадр, меняется только материал.',ask:'Есть украшение, которое точно должно быть в кадре?',max:2,cards:[
+ {k:'Украшения',id:'ge',part:2,t:'Из чего украшения?',q:'Один и тот же кадр, меняется только материал.',ask:'Есть украшение, которое точно должно быть в кадре?',max:3,cards:[
   ['G1','Бриллианты','колье, кольца, серьга'],['G2','Жемчуг','в несколько рядов'],['G3','Жидкий хром','литой чокер и кольца-капли'],['G4','Перья и мех','боа, ни одного камня']]},
- {k:'Игра',part:2,t:'Что ты делаешь с драгоценностями?',q:'Одно действие на картинку.',ask:'Своя идея: что ещё можно с ними делать?',max:3,cards:[
+ {k:'Сцены',id:'sc',part:2,t:'Какие сцены с украшениями нравятся?',q:'Это идеи для кадров. Бери все, которые хочешь видеть в ролике.',ask:'Своя идея для сцены с украшениями?',max:99,cards:[
   ['J1','Дождь','ловишь бриллианты ладонями'],['J2','Ванна','лежишь в жемчуге, в платье и перчатках'],['J3','Ужин','колье на вилке, рубин в бокале'],['J4','Кольца','на каждом пальце по три'],
-  ['J5','Улыбка','брекеты с бриллиантами крупным планом'],['J6','Вуаль','лицо закрыто кристаллами'],['J7','Качели','сидишь на огромном кольце'],['J8','Сейф','открываешь, свет бьёт изнутри']]},
- {k:'Суперприз',part:3,t:'Что такое суперприз?',q:'Главный образ ролика. Можно выбрать картинку или написать своё.',ask:'Свой вариант: что для тебя суперприз?',max:1,free:1,cards:[
-  ['P1','Бриллиант','огромный камень на постаменте'],['P4','Сердце','лаковое, в камнях'],['P6','Ты сама','в прозрачной коробке с бантом'],['P5','Машина','кабриолет с огромным бантом']]},
- {k:'Живое',part:3,t:'Кто ещё в кадре?',q:'Животное рядом с тобой или никого.',ask:'Своё животное?',max:2,cards:[
+  ['J5','Улыбка','брекеты с бриллиантами крупным планом'],['J6','Вуаль','лицо закрыто кристаллами'],['J7','Качели','сидишь на огромном кольце']]},
+ {k:'Суперприз',id:'pr',part:3,t:'Что такое суперприз?',q:'Главный образ ролика. Можно выбрать картинку или написать своё.',ask:'Свой вариант: что для тебя суперприз?',max:1,free:1,cards:[
+  ['P1','Бриллиант','огромный камень на постаменте'],['P4','Сердце','лаковое, в камнях'],['P6','Ты сама','главный приз — это ты: стоишь в подарочной коробке с бантом'],['P5','Машина','кабриолет с огромным бантом']]},
+ {k:'Живое',id:'fa',part:3,t:'Кто ещё в кадре?',q:'Животное рядом с тобой или никого.',ask:'Своё животное?',max:2,cards:[
   ['H1','Белые голуби','взлетают вокруг'],['H2','Пантера','чёрная, в бриллиантовом ошейнике'],['H3','Белая лошадь','с розовой гривой'],['H4','Бабочки','вылетают из коробки'],['E1','Никого','только ты']]},
- {k:'Настроение',part:3,t:'Какое настроение?',q:'Можно взять два.',ask:'Одним словом: какой это ролик?',max:2,opts:['Дерзко','Дорого','Смешно','Нежно','Странно, как во сне']},
- {k:'Ты в кадре',part:3,t:'Сколько тебя в кадре?',q:'',ask:'',max:1,opts:['Я в каждом кадре','Я появляюсь иногда','Только детали: губы, руки, силуэт']},
- {k:'Темп',part:3,t:'Какой темп?',q:'',ask:'Какой момент песни самый важный?',max:1,opts:['Быстрая нарезка под бит','Плавно и медленно','Сначала медленно, в припеве взрыв']}
+ {k:'Настроение',id:'vi',part:3,t:'Какое настроение?',q:'Можно взять два.',ask:'Одним словом: какой это ролик?',max:2,opts:['Дерзко','Дорого','Смешно','Нежно','Странно, как во сне']},
+ {k:'Ты в кадре',id:'me',part:3,t:'Сколько тебя в кадре?',q:'',ask:'',max:1,opts:['Я в каждом кадре','Я и перебивки: детали и мир вокруг','Я появляюсь иногда','Только детали: губы, руки, силуэт']}
 ];
 const HOW={2:'две',3:'до трёх',4:'до четырёх'}, FULL={2:'Уже выбрано две. Сначала убери одну.',3:'Уже выбрано три. Сначала убери одну.',4:'Уже выбрано четыре. Сначала убери одну.'};
 const N=CH.length, app=document.getElementById('app'), view=document.getElementById('view'), dockEl=document.getElementById('dock');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const LS={get(){try{return JSON.parse(localStorage.getItem('sp.state'))}catch(e){return null}},set(v){try{localStorage.setItem('sp.state',JSON.stringify(v))}catch(e){}}};
+const LS={get(){try{return JSON.parse(localStorage.getItem('sp2.state'))}catch(e){return null}},set(v){try{localStorage.setItem('sp2.state',JSON.stringify(v))}catch(e){}}};
 const blank=()=>({v:1,a:CH.map(()=>[[],[],'']),f:'',step:-1});
-function clean(o){const s=blank();if(!o||!Array.isArray(o.a))return s;
- CH.forEach((c,i)=>{const r=o.a[i]||[],n=(c.cards||c.opts).length,ok=x=>Number.isInteger(x)&&x>=0&&x<n;
+function clean(o){const s=blank();if(!o||!o.a)return s;
+ CH.forEach((c,i)=>{const r=(Array.isArray(o.a)?o.a[i]:o.a[c.id])||[],n=(c.cards||c.opts).length,ok=x=>Number.isInteger(x)&&x>=0&&x<n;
   s.a[i]=[(Array.isArray(r[0])?r[0]:[]).filter(ok).slice(0,c.max),(Array.isArray(r[1])?r[1]:[]).filter(ok).slice(0,n),String(r[2]||'').slice(0,90)]});
  s.f=String(o.f||'').slice(0,300);s.step=Number.isInteger(o.step)?Math.max(-1,Math.min(N,o.step)):-1;return s}
 let st=clean(LS.get()), mode='own', fromBoard=false;
-const save=()=>{if(mode==='own')LS.set(st)};
+const byId=()=>Object.fromEntries(CH.map((c,i)=>[c.id,st.a[i]]));
+const save=()=>{if(mode==='own')LS.set({v:2,a:byId(),f:st.f,step:st.step})};
 const done=i=>st.a[i][0].length>0||(CH[i].free&&st.a[i][2].trim());
 
 /* ссылка */
 async function squeeze(bytes,cls,fmt){const s=new cls(fmt),w=s.writable.getWriter();w.write(bytes);w.close();return new Uint8Array(await new Response(s.readable).arrayBuffer())}
-async function pack(){const o={v:1,a:st.a,f:st.f};let b=new TextEncoder().encode(JSON.stringify(o)),tag='r';
+async function pack(){const o={v:2,a:byId(),f:st.f};let b=new TextEncoder().encode(JSON.stringify(o)),tag='r';
  if(window.CompressionStream){try{const z=await squeeze(b,CompressionStream,'deflate-raw');if(z.length<b.length){b=z;tag='z'}}catch(e){}}
- let s='';for(const x of b)s+=String.fromCharCode(x);return 'S1'+tag+btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
-async function unpack(code){try{if(!/^S1[rz]/.test(code))return null;let s=code.slice(3).replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
+ let s='';for(const x of b)s+=String.fromCharCode(x);return 'S2'+tag+btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+async function unpack(code){try{if(!/^S2[rz]/.test(code))return null;let s=code.slice(3).replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
  let b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));if(code[2]==='z')b=await squeeze(b,DecompressionStream,'deflate-raw');
- const o=JSON.parse(new TextDecoder().decode(b));return o&&Array.isArray(o.a)?clean(o):null}catch(e){return null}}
+ const o=JSON.parse(new TextDecoder().decode(b));return o&&o.a?clean(o):null}catch(e){return null}}
 const linkFor=code=>location.href.split('#')[0]+'#'+code;
 async function copy(text,btn){let ok=false;try{await navigator.clipboard.writeText(text);ok=true}catch(e){const t=document.createElement('textarea');t.value=text;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(e2){}t.remove()}
  if(btn){const old=btn.textContent;btn.textContent=ok?'Скопировано, вставь в чат':'Не вышло, выдели вручную';setTimeout(()=>btn.textContent=old,2200)}}
@@ -250,14 +249,14 @@ function chapter(i){st.step=i;save();const c=CH[i],[p,n,t]=st.a[i];
  if(c.cards)body='<div class="grid">'+c.cards.map((d,j)=>`<button class="card${p.includes(j)?' sel':''}${n.includes(j)?' no':''}" data-act="open" data-j="${j}" style="--i:${j};--r:${((j*37+i*11)%7-3)*.55}deg"><i class="pin"></i><img class="ph" src="th/${d[0]}.jpg" alt="${esc(d[1])}">${d[3]?'<span class="pal">'+d[3].map(x=>`<i style="background:${x}"></i>`).join('')+'</span>':''}<span class="cap">${esc(d[1])}</span><span class="stamp y">БЕРУ</span><span class="stamp n">НЕТ</span></button>`).join('')+'</div>';
  else if(c.fonts)body='<div class="opts fonts">'+c.opts.map((o,j)=>`<button class="opt ft${p.includes(j)?' sel':''}" data-act="opt" data-j="${j}" style="--i:${j}"><span class="w" style="font-family:${c.fo[j][0]},system-ui;--z:${c.fo[j][1]}px;--fw:${c.fo[j][2]};--b:${c.fo[j][3]}">Супер<br>приз</span><span class="n">${esc(o)}</span></button>`).join('')+'</div>';
  else body='<div class="opts">'+c.opts.map((o,j)=>`<button class="opt${p.includes(j)?' sel':''}" data-act="opt" data-j="${j}" style="--i:${j}">${esc(o)}</button>`).join('')+'</div>';
- const rule=c.cards?'Тапни картинку, чтобы открыть. '+(c.max>1?'Можно взять '+HOW[c.max]+'.':'Берём одну.'):'';
+ const rule=c.cards?'Тапни картинку, чтобы открыть. '+(c.max>=c.cards.length?'Бери все, что нравятся.':c.max>1?'Можно взять '+HOW[c.max]+'.':'Берём одну.'):'';
  show(`<div class="top"><div class="dots">${dots}</div><span class="cnt">${i+1} из ${N}</span></div>
  <div class="chead"><span class="kick">${esc(PARTS[c.part])} · ${esc(c.k)}</span><h2>${esc(c.t)}</h2>${c.q?`<p>${esc(c.q)}</p>`:''}${rule?`<span class="rule">${rule}</span>`:''}</div>${body}`,COL[c.part]);
  dockEl.innerHTML=`<div><div id="ask"></div><div class="row"><button class="btn alt sm" data-act="back">←</button><button class="btn sm" id="next" data-act="next">${fromBoard?'Вернуться к доске':i===N-1?'К доске':'Дальше'}</button></div></div>`;
  dock(i)}
 function dock(i){const c=CH[i],[p,,t]=st.a[i],el=document.getElementById('ask');if(!el)return;
  const need=c.ask&&(p.length||c.free);
- if(need&&!el.firstChild){el.innerHTML=`<div class="ask"><label for="cm">${esc(c.ask)}</label><input id="cm" maxlength="90" placeholder="необязательно" autocomplete="off" value="${esc(t)}"></div>`}
+ if(need&&!el.firstChild){el.innerHTML=`<div class="ask"><label for="cm">${esc(c.ask)}</label><input id="cm" maxlength="90" placeholder="необязательно: напиши или надиктуй" autocomplete="off" value="${esc(t)}"></div>`}
  else if(!need)el.innerHTML='';
  document.getElementById('next').disabled=!done(i)}
 function toggle(i,j,kind){const c=CH[i],a=st.a[i],own=a[kind],other=a[1-kind];const at=own.indexOf(j);
