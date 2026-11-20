@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Суперприз: собери свой ролик</title>
+<style>
+@font-face{font-family:Dela;src:url(fonts/dela.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Caveat;font-weight:400 700;src:url(fonts/caveat.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Oswald;font-weight:400 700;src:url(fonts/oswald.woff2) format("woff2");font-display:swap}
+@font-face{font-family:RubikMono;src:url(fonts/rubikmono.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Unbounded;font-weight:400 900;src:url(fonts/unbounded.woff2) format("woff2");font-display:swap}
+@font-face{font-family:PlayfairI;font-style:italic;font-weight:400 900;src:url(fonts/playfair-i.woff2) format("woff2");font-display:swap}
+:root{--ink:#14090f;--pink:#FF2E93;--red:#E5121D;--yel:#FFE14D;--paper:#fff;--ch:#FF2E93}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{min-height:100%;background:var(--ch);transition:background-color .6s}
+body{min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(130% 70% at 0% 0%,rgba(255,255,255,.38),transparent 58%),radial-gradient(90% 60% at 100% 100%,rgba(0,0,0,.34),transparent 60%),radial-gradient(rgba(255,255,255,.13) 1.2px,transparent 1.8px);background-size:auto,auto,14px 14px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#decor{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+#decor .rb{position:absolute;height:44px;width:150vmax;background:linear-gradient(180deg,#ff5a5a 0,#ff2b2b 22%,#d40f1a 60%,#a30812 100%);box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 3px 0 rgba(255,255,255,.35);opacity:.92}
+#decor .r1{top:92px;left:-40vmax;transform:rotate(-16deg);height:34px}
+#decor .r2{bottom:10%;left:-40vmax;transform:rotate(18deg);height:26px;background:linear-gradient(180deg,#fff,#d9dee5 55%,#9aa3b2);opacity:.75}
+#decor .sp{position:absolute;width:var(--s,26px);height:var(--s,26px);background:#fff;clip-path:polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%);animation:twinkle var(--d,2.4s) ease-in-out infinite;animation-delay:var(--w,0s)}
+@keyframes twinkle{0%,100%{transform:scale(.25) rotate(0deg);opacity:.15}50%{transform:scale(1) rotate(45deg);opacity:1}}
+#app{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 14px calc(150px + env(safe-area-inset-bottom))}
+.screen{animation:softin .45s ease both}
+@keyframes softin{from{opacity:0;transform:translateY(22px)}}
+h1,h2,.dela{font-family:Dela,system-ui,sans-serif;font-weight:400;letter-spacing:-.01em}
+.hand{font-family:Caveat,cursive}
+
+/* обложка */
+.cover{min-height:calc(100vh - 60px);display:flex;flex-direction:column;justify-content:center;color:#fff}
+.sheet{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;box-shadow:0 14px 30px rgba(60,0,30,.35)}
+.fan{position:relative;height:clamp(150px,45vw,205px);margin:0 0 2px}
+.fan img{position:absolute;left:50%;bottom:0;width:29%;aspect-ratio:9/16;object-fit:cover;border:5px solid #fff;border-radius:14px;box-shadow:0 12px 24px rgba(60,0,30,.45);transform-origin:50% 120%;animation:fan .8s cubic-bezier(.2,1.4,.4,1) both}
+.fan img:nth-child(1){transform:translateX(-50%) rotate(-17deg);animation-delay:.1s}
+.fan img:nth-child(2){transform:translateX(-50%) rotate(17deg);animation-delay:.2s}
+.fan img:nth-child(3){transform:translateX(-50%) rotate(0deg) translateY(-12px);animation-delay:.32s;z-index:2}
+@keyframes fan{from{opacity:0;transform:translateX(-50%) rotate(0deg) translateY(60%) scale(.7)}}
+.kick{font:800 12px/1 system-ui;letter-spacing:.18em;text-transform:uppercase;color:var(--ch)}
+.cover .kick{color:#fff;opacity:.92;margin-top:14px;display:block}
+.cover h1{font-size:clamp(44px,14.5vw,66px);line-height:.9;margin:8px 0 0;color:#fff;text-shadow:0 2px 0 #ffd0e6,0 5px 0 #b00e5c,0 9px 0 rgba(90,0,45,.6),0 18px 26px rgba(60,0,30,.5)}
+.cover h1 em{font-style:normal;display:block;color:var(--yel);text-shadow:0 2px 0 #fff3a8,0 5px 0 #c98a00,0 9px 0 rgba(90,50,0,.6),0 18px 26px rgba(60,0,30,.5)}
+.lead{font-size:16px;line-height:1.36;margin-top:16px;font-weight:600}
+.steps{margin:13px 0 18px;display:grid;gap:7px;font-size:14px;line-height:1.25;font-weight:600}
+.steps div{background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.55);border-radius:999px;padding:6px 14px 6px 6px;display:flex;align-items:center}
+.steps b{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--ch);font-size:13px;margin-right:10px}
+.btn{position:relative;display:block;width:100%;text-align:center;font-family:Dela,system-ui;font-size:17px;padding:17px 18px;color:#fff;border-radius:18px;background:linear-gradient(180deg,#3b2a33 0,#14090f 55%);box-shadow:inset 0 2px 0 rgba(255,255,255,.28),0 6px 0 rgba(0,0,0,.45),0 14px 22px rgba(40,0,20,.35);transition:transform .12s,box-shadow .12s,opacity .2s}
+.btn:active{transform:translateY(5px);box-shadow:inset 0 2px 0 rgba(255,255,255,.28),0 1px 0 rgba(0,0,0,.45)}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.btn.alt{background:linear-gradient(180deg,#fff,#eceef2);color:var(--ink);box-shadow:inset 0 -3px 0 rgba(0,0,0,.08),0 6px 0 rgba(0,0,0,.3),0 14px 22px rgba(40,0,20,.3)}
+.btn.sm{font-size:15px;padding:14px 14px;border-radius:16px}
+.link{display:block;margin:18px auto 0;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:#fff;opacity:.9}
+
+/* глава */
+.top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.dots{display:flex;gap:4px;flex:1}
+.dots i{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.3)}
+.dots i.on{background:#fff}.dots i.now{background:var(--yel);box-shadow:0 0 8px var(--yel)}
+.cnt{font:800 12px/1 system-ui;color:#fff;white-space:nowrap}
+.chead{background:#fff;border-radius:22px;padding:18px 18px 16px;box-shadow:0 12px 26px rgba(40,0,20,.3);margin:4px 0 18px}
+.chead h2{font-size:clamp(26px,8.4vw,34px);line-height:1.02;margin-top:9px}
+.chead p{font-size:15.5px;line-height:1.35;margin-top:8px}
+.chead .rule{display:inline-block;margin-top:11px;font:700 12px/1.25 system-ui;background:var(--ink);color:#fff;padding:6px 11px;border-radius:999px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
+.card{position:relative;background:#fff;border-radius:16px;padding:5px 5px 0;text-align:left;box-shadow:0 8px 18px rgba(40,0,20,.32);transform:rotate(var(--r,0deg));animation:drop .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i)*55ms);transition:transform .2s,box-shadow .2s}
+@keyframes drop{from{opacity:0;transform:translateY(-34px) rotate(calc(var(--r,0deg) - 9deg)) scale(.92)}}
+.card .ph{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#f3d7e6;border-radius:12px}
+.card .cap{display:block;font:800 13px/1.15 system-ui;padding:8px 5px 10px;min-height:44px}
+.card .pal{display:flex;height:10px;margin-top:5px;border-radius:5px;overflow:hidden}.card .pal i{flex:1}
+.card.sel{transform:rotate(var(--r,0deg)) scale(1.03);box-shadow:0 0 0 4px var(--yel),0 0 22px 6px rgba(255,225,77,.75),0 10px 20px rgba(40,0,20,.4);z-index:2}
+.card.no .ph{filter:grayscale(1) brightness(.7)}
+.card.no .cap{text-decoration:line-through;opacity:.5}
+.pin{position:absolute;top:-10px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#fff 0 11%,var(--c,#e11) 13% 62%,rgba(0,0,0,.4) 100%);box-shadow:2px 4px 3px rgba(0,0,0,.35);z-index:3}
+.card .pin{display:none}.card.sel .pin{display:block;animation:pin .35s cubic-bezier(.2,2,.4,1) both;--c:var(--red)}
+@keyframes pin{from{transform:translateY(-40px) scale(1.8);opacity:0}}
+.stamp{position:absolute;right:8px;top:36%;font-family:Dela,system-ui;font-size:19px;padding:3px 10px;border:3px solid;border-radius:8px;transform:rotate(-14deg);background:rgba(255,255,255,.94);display:none;z-index:3}
+.card.sel .stamp.y{display:block;color:var(--red);animation:slam .3s cubic-bezier(.2,1.8,.4,1) both}
+.card.no .stamp.n{display:block;color:#555;animation:slam .3s cubic-bezier(.2,1.8,.4,1) both}
+@keyframes slam{from{transform:rotate(-14deg) scale(2.4);opacity:0}}
+.opts{display:grid;gap:12px}
+.opt{position:relative;display:block;width:100%;text-align:left;background:#fff;border-radius:18px;padding:18px 16px 18px 50px;font-size:17px;line-height:1.3;font-weight:700;box-shadow:0 8px 18px rgba(40,0,20,.28);animation:drop .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i)*70ms);transition:background .15s,color .15s}
+.opt::before{content:"";position:absolute;left:16px;top:50%;width:20px;height:20px;margin-top:-10px;border:3px solid var(--ink);border-radius:50%}
+.opt.sel{background:var(--ink);color:#fff;box-shadow:0 0 0 4px var(--yel),0 0 20px 4px rgba(255,225,77,.6)}.opt.sel::before{border-color:#fff;background:var(--yel)}
+.opts.fonts{grid-template-columns:1fr 1fr}
+.opt.ft{padding:0;overflow:hidden;text-align:center;background:#fff}
+.opt.ft::before{display:none}
+.opt.ft .w{display:grid;place-items:center;height:118px;padding:6px;color:#fff;background:var(--b);font-size:var(--z,26px);line-height:.95;font-weight:var(--fw,400)}
+.opt.ft .n{display:block;font:800 12.5px/1.2 system-ui;padding:9px 6px 10px;color:var(--ink)}
+.opt.ft.sel{background:#fff}.opt.ft.sel .n{color:var(--ink)}
+
+/* нижняя панель */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:30px 14px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(20,9,15,.72) 34px);pointer-events:none}
+.dock>div{max-width:432px;margin:0 auto;pointer-events:auto}.dock:empty{display:none}
+.ask{background:var(--yel);border-radius:16px;padding:11px 12px 12px;margin-bottom:12px;box-shadow:0 8px 18px rgba(0,0,0,.35);animation:softin .35s ease both}
+.ask label{display:block;font:800 13.5px/1.25 system-ui;margin-bottom:7px}
+.ask input,.note textarea{width:100%;font:500 16px/1.3 system-ui;padding:10px 12px;border:2px solid var(--ink);border-radius:11px;background:#fff;color:var(--ink);outline:0}
+.row{display:grid;grid-template-columns:auto 1fr;gap:12px}
+.row .btn.alt{width:auto;padding-left:20px;padding-right:20px}
+
+/* просмотр карточки */
+#view{position:fixed;inset:0;z-index:20;background:rgba(20,6,14,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:calc(10px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom));gap:12px}
+#view.on{display:flex;animation:fade .2s ease both}
+@keyframes fade{from{opacity:0}}
+#view .frame{position:relative;background:#fff;border-radius:18px;padding:6px 6px 0;max-height:calc(100% - 132px);display:flex;flex-direction:column;animation:pop .32s cubic-bezier(.2,1.4,.4,1) both;box-shadow:0 0 40px rgba(255,46,147,.45)}
+@keyframes pop{from{transform:scale(.86) rotate(-3deg);opacity:0}}
+#view img{display:block;max-width:100%;max-height:calc(100vh - 250px);aspect-ratio:9/16;object-fit:contain;background:#222;border-radius:13px}
+#view .vt{padding:10px 6px 11px}
+#view .vt b{display:block;font-family:Dela,system-ui;font-weight:400;font-size:19px;line-height:1.1}
+#view .vt span{display:block;font-size:14px;line-height:1.3;margin-top:4px;opacity:.8}
+#view .vb{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:420px}
+#view .vb .btn{font-size:15px;padding:15px 8px}
+#view .yes{background:linear-gradient(180deg,#ff6ab3,#ff2e93 55%,#d9107a)}#view .yes.on{background:linear-gradient(180deg,#fff,#eceef2);color:var(--ink)}
+#view .nope{background:linear-gradient(180deg,#5a4a52,#33262d)}#view .nope.on{background:linear-gradient(180deg,#ff5a5a,#d40f1a)}
+#view .x,#view .nav{position:absolute;color:#fff;font-size:26px;width:46px;height:46px;display:grid;place-items:center;background:rgba(0,0,0,.5);border-radius:50%}
+#view .x{top:calc(8px + env(safe-area-inset-top));right:10px}
+#view .nav{top:42%}#view .prev{left:6px}#view .next{right:6px}
+
+/* доска */
+.banner{position:relative;z-index:2;margin:0 6px -20px;background:#fff;border-radius:20px;padding:15px 16px;text-align:center;transform:rotate(-1.5deg);box-shadow:0 12px 24px rgba(0,0,0,.4)}
+.banner h2{font-size:clamp(24px,7.6vw,31px);line-height:1.05}
+.banner p{font-size:14.5px;line-height:1.3;margin-top:6px}
+.board{position:relative;border:13px solid #6b4423;border-image:linear-gradient(135deg,#8a5a30,#5a3618 40%,#7a4c26 70%,#4f2f14) 1;background-color:#bf8b52;background-image:radial-gradient(rgba(80,45,15,.4) 1px,transparent 1.6px),radial-gradient(rgba(255,225,180,.3) 1px,transparent 1.6px),radial-gradient(rgba(60,35,10,.22) 2px,transparent 2.6px);background-size:7px 7px,11px 11px,23px 23px;background-position:0 0,3px 5px,9px 13px;box-shadow:inset 0 0 26px rgba(50,25,5,.55),0 18px 34px rgba(0,0,0,.5);padding:40px 12px 22px}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 14px;align-items:start}
+.pol{position:relative;background:#fffdf7;padding:7px 7px 6px;box-shadow:3px 6px 9px rgba(40,20,5,.45);transform:rotate(var(--r));animation:fly .65s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(var(--i)*90ms + .2s);text-align:left;display:block;width:100%}
+@keyframes fly{from{opacity:0;transform:translate(var(--fx),-70vh) rotate(calc(var(--r)*6)) scale(1.3)}}
+.pol:nth-child(even){margin-top:22px}
+.pol img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+.pol .l1{display:block;font:700 10.5px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:8px}
+.pol .l2{display:block;font-family:Caveat,cursive;font-size:23px;font-weight:700;line-height:1;margin:3px 0 4px}
+.pol .cm{display:block;font-family:Caveat,cursive;font-size:19px;line-height:1.05;color:#2b3fb5;margin:2px 0 4px;word-break:break-word}
+.pol .pin{animation:pin .3s cubic-bezier(.2,2,.4,1) both;animation-delay:calc(var(--i)*90ms + .75s)}
+.stick{position:relative;padding:16px 12px 14px;background:var(--c);box-shadow:3px 6px 8px rgba(40,20,5,.4);transform:rotate(var(--r));animation:fly .65s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(var(--i)*90ms + .2s);text-align:left;display:block;width:100%}
+.stick:nth-child(even){margin-top:22px}
+.stick .l1{display:block;font:700 10.5px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.stick .l2{display:block;font-family:Caveat,cursive;font-size:25px;font-weight:700;line-height:1.02;margin-top:6px}
+.stick .l2.fw{font-size:22px;line-height:1}
+.stick .cm{display:block;font-family:Caveat,cursive;font-size:19px;line-height:1.05;color:#2b3fb5;margin-top:6px;word-break:break-word}
+.bin{margin-top:26px;padding-top:14px;border-top:2px dashed rgba(60,30,5,.5)}
+.bin h3{font:800 12px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;color:#3b2109;margin-bottom:10px}
+.bin div{display:flex;flex-wrap:wrap;gap:8px}
+.bin span{position:relative;width:54px;background:#fffdf7;padding:3px;box-shadow:2px 3px 5px rgba(40,20,5,.4)}
+.bin img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;filter:grayscale(1)}
+.bin span::after{content:"";position:absolute;inset:0;background:linear-gradient(45deg,transparent 46%,var(--red) 46% 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,var(--red) 46% 54%,transparent 54%)}
+.note{background:#fff;border-radius:20px;padding:16px;margin-top:24px;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+.note label{display:block;font:800 14px/1.25 system-ui;margin-bottom:8px}
+.note textarea{min-height:76px;resize:vertical}
+.after{margin-top:22px;display:grid;gap:16px}
+.share{background:#fff;border-radius:20px;padding:20px 16px;box-shadow:0 12px 24px rgba(0,0,0,.35);animation:softin .4s ease both}
+.share h3{font-family:Dela,system-ui;font-weight:400;font-size:22px;line-height:1.1}
+.share p{font-size:15px;line-height:1.35;margin:8px 0 14px}
+pre.tz{white-space:pre-wrap;word-break:break-word;font:500 13.5px/1.45 ui-monospace,Consolas,monospace;background:#f6f3f5;padding:14px;border-radius:12px;max-height:60vh;overflow:auto}
+.conf{position:fixed;top:-20px;z-index:30;width:9px;height:16px;pointer-events:none;animation:fall linear both}
+@keyframes fall{to{transform:translateY(112vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<div id="decor"><i class="rb r1"></i><i class="sp" style="left:8%;top:9%;--s:30px;--d:2.6s;--w:-0.2s"></i><i class="sp" style="left:84%;top:6%;--s:20px;--d:3.1s;--w:-1.1s"></i><i class="sp" style="left:92%;top:31%;--s:34px;--d:2.2s;--w:-0.7s"></i><i class="sp" style="left:4%;top:47%;--s:18px;--d:3.4s;--w:-1.9s"></i><i class="sp" style="left:78%;top:62%;--s:26px;--d:2.8s;--w:-0.4s"></i><i class="sp" style="left:14%;top:78%;--s:36px;--d:2.5s;--w:-1.4s"></i><i class="sp" style="left:90%;top:88%;--s:22px;--d:3.0s;--w:-2.2s"></i><i class="sp" style="left:46%;top:3%;--s:14px;--d:2.1s;--w:-0.9s"></i><i class="sp" style="left:55%;top:93%;--s:16px;--d:3.3s;--w:-0.1s"></i></div>
+<div id="app"><div class="screen"><div class="sheet"><h2 class="dela">Суперприз</h2><p style="margin-top:10px;line-height:1.4">Страница загружается. Если она так и осталась пустой, открой ссылку в обычном браузере.</p></div></div></div>
+<div id="dock" class="dock"></div>
+<div id="view"></div>
+<script>
+'use strict';
+const PARTS=['Каким будет ролик','Как он выглядит','Ты в кадре','Главное'];
+const COL=['#FF2E93','#2434FF','#8B2CF5','#E5121D'], DARK='#1b0a14';
+const CH=[
+ {k:'Техника',part:0,t:'Живая съёмка или мультик?',q:'Каким ты видишь ролик: как кино или как мультфильм.',ask:'Есть клип или мультик, на который это должно быть похоже?',max:2,cards:[
+  ['A1','Живая съёмка','гиперреализм, как дорогой клип'],['A2','3D-мультфильм','кукольный глянец, как большая анимация'],['A3','Аниме 90-х','рисованное, большие глаза, зерно плёнки'],['A4','Пластилин','лепка руками, видны отпечатки'],
+  ['A5','Бумажная вырезка','слои бумаги, рваные края'],['A6','Мультсериал 2000-х','плоский рисунок, толстый контур'],['A7','Мультфильм 30-х','глаза-пуговицы, перчатки, гибкие руки'],['A8','Поп-арт','комикс, растровые точки']]},
+ {k:'Эпоха',part:0,t:'В какой эпохе живёт ролик?',q:'Декорации, костюм и приз меняются вместе с эпохой.',ask:'Что из этой эпохи обязательно должно быть в кадре?',max:2,cards:[
+  ['B1','Барокко','золото, красный бархат, свет как на картинах'],['B2','Рококо','лепнина, банты, цветы, конфетные цвета'],['B3','Ар-деко','чёрный лак, золото, геометрия двадцатых'],['B4','Космические 60-е','белый пластик, круглые окна, оранжевый'],
+  ['B5','Диско 70-х','зеркальные шары, светящийся пол, блёстки'],['B6','Двухтысячные','хром, стразы, надувная мебель, раскладушки'],['B7','Старые деньги','мрамор, дерево, теннисный клуб'],['B8','Готический гламур','чёрное кружево, свечи, рубин']]},
+ {k:'Мир',part:0,t:'Где всё происходит?',q:'Место, похожее на сон: всё настоящее, кроме одной вещи.',ask:'Что бы ты добавила в этот мир?',max:2,cards:[
+  ['W1','Хранилище','бриллианты и жемчуг лежат дюнами'],['W2','Бассейн с бриллиантами','вилла, полдень, фламинго'],['W3','Шкатулка изнутри','красный бархат, кольца размером с арку'],['W4','Затопленный театр','бирюзовая вода, лебеди, гора подарков'],
+  ['W5','Карусель в облаках','закат, живые белые лошади'],['W6','Сад гигантских цветов','попугаи, люстра прямо на ветке'],['W7','Автомат с призами','ты внутри, сверху спускается клешня'],['W8','Кольцо на озере','кольцо размером с дом, белые лошади']]},
+ {k:'Цвет',part:1,t:'Какие цвета твои?',q:'Кадр один и тот же, меняется только цвет.',ask:'Какого цвета в ролике точно не должно быть?',max:2,cards:[
+  ['C1','Розовый и хром','',['#FF2E93','#FF8CC6','#D9DEE5','#8E99A8','#FFFFFF']],['C2','Алый и фуксия','',['#E5121D','#FF1E8E','#B00E5C','#FF6FA8','#FFFFFF']],['C3','Лайм и фуксия','',['#B6F500','#FF1E8E','#7AC900','#C2166F','#FFFFFF']],
+  ['C4','Синий и серебро','',['#1A2BFF','#0A14B8','#C9D0DA','#8A94A6','#FFFFFF']],['C5','Чёрный и золото','',['#0B0B0B','#E3B23C','#B8860B','#FFE08A','#FFFFFF']],['C6','Молочный и красный','',['#F4F1EC','#E5121D','#D8D2C8','#FFFFFF','#B00E18']]]},
+ {k:'Свет',part:1,t:'Какой свет?',q:'Кадр один и тот же, меняется только свет.',ask:'Свет резкий или мягкий? Можно своими словами.',max:1,cards:[
+  ['D1','Жёсткое солнце','резкие тени от окна'],['D2','Золотой час','низкий тёплый свет сбоку'],['D3','Ночной неон','розовые и синие трубки, отражения']]},
+ {k:'Плотность',part:1,t:'Сколько всего в кадре?',q:'От пустого зала до комнаты, набитой до потолка.',ask:'Какие предметы хочешь видеть вокруг себя?',max:1,cards:[
+  ['E1','Пусто','только ты и главный предмет'],['E2','Средне','десяток вещей вокруг'],['E3','До потолка','сотни предметов, глаз не успевает']]},
+ {k:'Шрифт',part:1,t:'Каким шрифтом слова песни?',q:'Если в ролике будут титры или строчки из трека.',ask:'Слова в кадре нужны или лучше без них?',max:1,fonts:1,opts:['Жирный поп','Глянцевый журнал','Плакат','Современный','От руки','Афиша'],fo:[['Dela',26,400,'#FF2E93'],['PlayfairI',31,800,'#14090f'],['RubikMono',21,400,'#E5121D'],['Unbounded',22,800,'#2434FF'],['Caveat',40,700,'#8B2CF5'],['Oswald',33,700,'#0a8f5b']]},
+ {k:'Образ',part:2,t:'Во что ты одета?',q:'Образы новые. Лица нет нарочно: выбираем только наряд.',ask:'Что поменять в этом образе?',max:2,cards:[
+  ['F1','Платье-облако','слои тюля и огромный бант'],['F2','Алый лак','виниловый тренч и лаковые сапоги'],['F3','Кристальная сетка','мини, всё в бликах'],['F4','Белый смокинг','оверсайз, широкие брюки'],['F5','Перья','мини из перьев и длинные перчатки'],
+  ['F6','Кожа и стразы','куртка, мини, грубые ботинки'],['F7','Велюр 2000-х','спортивный костюм со стразами'],['F8','Королева конкурса','атлас в пол, лента и корона'],['F9','Серебряный комбинезон','зеркальный, космический']]},
+ {k:'Украшения',part:2,t:'Из чего украшения?',q:'Один и тот же кадр, меняется только материал.',ask:'Есть украшение, которое точно должно быть в кадре?',max:2,cards:[
+  ['G1','Бриллианты','колье, кольца, серьга'],['G2','Жемчуг','в несколько рядов'],['G3','Жидкий хром','литой чокер и кольца-капли'],['G4','Перья и мех','боа, ни одного камня']]},
+ {k:'Игра',part:2,t:'Что ты делаешь с драгоценностями?',q:'Одно действие на картинку.',ask:'Своя идея: что ещё можно с ними делать?',max:2,cards:[
+  ['J1','Дождь','ловишь бриллианты ладонями'],['J2','Ванна','лежишь в жемчуге, в платье и перчатках'],['J3','Ужин','колье на вилке, рубин в бокале'],['J4','Кольца','на каждом пальце по три'],
+  ['J5','Улыбка','брекеты с бриллиантами крупным планом'],['J6','Вуаль','лицо закрыто кристаллами'],['J7','Качели','сидишь на огромном кольце'],['J8','Сейф','открываешь, свет бьёт изнутри']]},
+ {k:'Суперприз',part:3,t:'Что такое суперприз?',q:'Главный образ ролика. Можно выбрать картинку или написать своё.',ask:'Свой вариант: что для тебя суперприз?',max:1,free:1,cards:[
+  ['P1','Бриллиант','огромный камень на постаменте'],['P4','Сердце','лаковое, в камнях'],['P6','Ты сама','в прозрачной коробке с бантом'],['P5','Машина','кабриолет с огромным бантом']]},
+ {k:'Живое',part:3,t:'Кто ещё в кадре?',q:'Животное рядом с тобой или никого.',ask:'Своё животное?',max:2,cards:[
+  ['H1','Белые голуби','взлетают вокруг'],['H2','Пантера','чёрная, в бриллиантовом ошейнике'],['H3','Белая лошадь','с розовой гривой'],['H4','Бабочки','вылетают из коробки'],['E1','Никого','только ты']]},
+ {k:'Настроение',part:3,t:'Какое настроение?',q:'Можно взять два.',ask:'Одним словом: какой это ролик?',max:2,opts:['Дерзко','Дорого','Смешно','Нежно','Странно, как во сне']},
+ {k:'Ты в кадре',part:3,t:'Сколько тебя в кадре?',q:'',ask:'',max:1,opts:['Я в каждом кадре','Я появляюсь иногда','Только детали: губы, руки, силуэт']},
+ {k:'Темп',part:3,t:'Какой темп?',q:'',ask:'Какой момент песни самый важный?',max:1,opts:['Быстрая нарезка под бит','Плавно и медленно','Сначала медленно, в припеве взрыв']}
+];
+const N=CH.length, app=document.getElementById('app'), view=document.getElementById('view'), dockEl=document.getElementById('dock');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LS={get(){try{return JSON.parse(localStorage.getItem('sp.state'))}catch(e){return null}},set(v){try{localStorage.setItem('sp.state',JSON.stringify(v))}catch(e){}}};
+const blank=()=>({v:1,a:CH.map(()=>[[],[],'']),f:'',step:-1});
+function clean(o){const s=blank();if(!o||!Array.isArray(o.a))return s;
+ CH.forEach((c,i)=>{const r=o.a[i]||[],n=(c.cards||c.opts).length,ok=x=>Number.isInteger(x)&&x>=0&&x<n;
+  s.a[i]=[(Array.isArray(r[0])?r[0]:[]).filter(ok).slice(0,c.max),(Array.isArray(r[1])?r[1]:[]).filter(ok).slice(0,n),String(r[2]||'').slice(0,90)]});
+ s.f=String(o.f||'').slice(0,300);s.step=Number.isInteger(o.step)?Math.max(-1,Math.min(N,o.step)):-1;return s}
+let st=clean(LS.get()), mode='own', fromBoard=false;
+const save=()=>{if(mode==='own')LS.set(st)};
+const done=i=>st.a[i][0].length>0||(CH[i].free&&st.a[i][2].trim());
+
+/* ссылка */
+async function squeeze(bytes,cls,fmt){const s=new cls(fmt),w=s.writable.getWriter();w.write(bytes);w.close();return new Uint8Array(await new Response(s.readable).arrayBuffer())}
+async function pack(){const o={v:1,a:st.a,f:st.f};let b=new TextEncoder().encode(JSON.stringify(o)),tag='r';
+ if(window.CompressionStream){try{const z=await squeeze(b,CompressionStream,'deflate-raw');if(z.length<b.length){b=z;tag='z'}}catch(e){}}
+ let s='';for(const x of b)s+=String.fromCharCode(x);return 'S1'+tag+btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+async function unpack(code){try{if(!/^S1[rz]/.test(code))return null;let s=code.slice(3).replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
+ let b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));if(code[2]==='z')b=await squeeze(b,DecompressionStream,'deflate-raw');
+ const o=JSON.parse(new TextDecoder().decode(b));return o&&Array.isArray(o.a)?clean(o):null}catch(e){return null}}
+const linkFor=code=>location.href.split('#')[0]+'#'+code;
+async function copy(text,btn){let ok=false;try{await navigator.clipboard.writeText(text);ok=true}catch(e){const t=document.createElement('textarea');t.value=text;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(e2){}t.remove()}
+ if(btn){const old=btn.textContent;btn.textContent=ok?'Скопировано, вставь в чат':'Не вышло, выдели вручную';setTimeout(()=>btn.textContent=old,2200)}}
+
+/* текст для ТЗ */
+function brief(){const L=['ВЫБОР ДЛЯ РОЛИКА «СУПЕРПРИЗ»',''];let part=-1;
+ CH.forEach((c,i)=>{const [p,n,t]=st.a[i];if(c.part!==part){part=c.part;L.push('— '+PARTS[part].toUpperCase()+' —')}
+  const nm=x=>c.cards?c.cards[x][1]+(c.cards[x][2]?' ('+c.cards[x][2]+')':''):c.opts[x];
+  L.push((i+1)+'. '+c.k+': '+(p.length?p.map(nm).join('; '):'не выбрано'));
+  if(n.length)L.push('   Точно нет: '+n.map(x=>c.cards?c.cards[x][1]:c.opts[x]).join('; '));
+  if(t.trim())L.push('   '+(c.ask||'Комментарий')+' — «'+t.trim()+'»')});
+ if(st.f.trim())L.push('','Что ещё важно: «'+st.f.trim()+'»');return L.join('\n')}
+
+/* экраны */
+function show(html,col){app.style.paddingBottom=html.indexOf('class="cover"')>=0?'24px':'';document.documentElement.style.setProperty('--ch',col||COL[0]);app.innerHTML='<div class="screen">'+html+'</div>';dockEl.innerHTML='';window.scrollTo(0,0)}
+function cover(){const started=st.step>=0;
+ show(`<div class="cover"><div class="fan"><img src="th/W4.jpg" alt=""><img src="th/J6.jpg" alt=""><img src="th/P4.jpg" alt=""></div>
+ <span class="kick">собери свой ролик</span><h1>Супер<em>приз</em></h1>
+ <p class="lead">Это конструктор ролика под «Суперприз». Выбирай картинки, которые нравятся, и по ним соберём клип. Правильных ответов нет.</p>
+ <div class="steps"><div><b>1</b>${N} шагов, минуты три</div><div><b>2</b>Тапни картинку, чтобы открыть крупно</div><div><b>3</b>В конце доска с твоим выбором</div></div>
+ <button class="btn alt" data-act="start">${started?'Продолжить':'Собрать ролик'}</button>${started?'<button class="link" data-act="reset">Начать сначала</button>':''}</div>`)}
+function chapter(i){st.step=i;save();const c=CH[i],[p,n,t]=st.a[i];
+ const dots=CH.map((_,j)=>`<i class="${j===i?'now':done(j)?'on':''}"></i>`).join('');
+ let body;
+ if(c.cards)body='<div class="grid">'+c.cards.map((d,j)=>`<button class="card${p.includes(j)?' sel':''}${n.includes(j)?' no':''}" data-act="open" data-j="${j}" style="--i:${j};--r:${((j*37+i*11)%7-3)*.55}deg"><i class="pin"></i><img class="ph" loading="lazy" src="th/${d[0]}.jpg" alt="${esc(d[1])}">${d[3]?'<span class="pal">'+d[3].map(x=>`<i style="background:${x}"></i>`).join('')+'</span>':''}<span class="cap">${esc(d[1])}</span><span class="stamp y">БЕРУ</span><span class="stamp n">НЕТ</span></button>`).join('')+'</div>';
+ else if(c.fonts)body='<div class="opts fonts">'+c.opts.map((o,j)=>`<button class="opt ft${p.includes(j)?' sel':''}" data-act="opt" data-j="${j}" style="--i:${j}"><span class="w" style="font-family:${c.fo[j][0]},system-ui;--z:${c.fo[j][1]}px;--fw:${c.fo[j][2]};--b:${c.fo[j][3]}">Супер<br>приз</span><span class="n">${esc(o)}</span></button>`).join('')+'</div>';
+ else body='<div class="opts">'+c.opts.map((o,j)=>`<button class="opt${p.includes(j)?' sel':''}" data-act="opt" data-j="${j}" style="--i:${j}">${esc(o)}</button>`).join('')+'</div>';
+ const rule=c.cards?(c.max>1?'Тапни картинку, чтобы открыть. Можно взять две.':'Тапни картинку, чтобы открыть. Берём одну.'):'';
+ show(`<div class="top"><div class="dots">${dots}</div><span class="cnt">${i+1} из ${N}</span></div>
+ <div class="chead"><span class="kick">${esc(PARTS[c.part])} · ${esc(c.k)}</span><h2>${esc(c.t)}</h2>${c.q?`<p>${esc(c.q)}</p>`:''}${rule?`<span class="rule">${rule}</span>`:''}</div>${body}`,COL[c.part]);
+ dockEl.innerHTML=`<div><div id="ask"></div><div class="row"><button class="btn alt sm" data-act="back">←</button><button class="btn sm" id="next" data-act="next">${fromBoard?'Вернуться к доске':i===N-1?'К доске':'Дальше'}</button></div></div>`;
+ dock(i)}
+function dock(i){const c=CH[i],[p,,t]=st.a[i],el=document.getElementById('ask');if(!el)return;
+ const need=c.ask&&(p.length||c.free);
+ if(need&&!el.firstChild){el.innerHTML=`<div class="ask"><label for="cm">${esc(c.ask)}</label><input id="cm" maxlength="90" placeholder="необязательно" autocomplete="off" value="${esc(t)}"></div>`}
+ else if(!need)el.innerHTML='';
+ document.getElementById('next').disabled=!done(i)}
+function toggle(i,j,kind){const c=CH[i],a=st.a[i],own=a[kind],other=a[1-kind];const at=own.indexOf(j);
+ if(at>=0)own.splice(at,1);else{const o=other.indexOf(j);if(o>=0)other.splice(o,1);own.push(j);if(kind===0&&own.length>c.max)own.shift()}
+ save()}
+function paint(i){const [p,n]=st.a[i];app.querySelectorAll('.card').forEach(el=>{const j=+el.dataset.j;el.classList.toggle('sel',p.includes(j));el.classList.toggle('no',n.includes(j))});
+ app.querySelectorAll('.opt').forEach(el=>el.classList.toggle('sel',p.includes(+el.dataset.j)));dock(i)}
+let vi=0,vj=0;
+function openCard(i,j){vi=i;vj=j;const c=CH[i],d=c.cards[j],[p,n]=st.a[i];
+ view.innerHTML=`<button class="x" data-act="close">✕</button><div class="frame"><img src="img/${d[0]}.jpg" alt=""><div class="vt"><b>${esc(d[1])}</b>${d[2]?`<span>${esc(d[2])}</span>`:''}</div></div>
+ <button class="nav prev" data-act="vnav" data-d="-1">‹</button><button class="nav next" data-act="vnav" data-d="1">›</button>
+ <div class="vb"><button class="btn nope${n.includes(j)?' on':''}" data-act="vno">${n.includes(j)?'Убрать «нет»':'Точно нет'}</button><button class="btn yes${p.includes(j)?' on':''}" data-act="vyes">${p.includes(j)?'Убрать':'Беру'}</button></div>`;
+ view.classList.add('on')}
+function closeCard(){view.classList.remove('on');view.innerHTML='';paint(vi)}
+
+function board(){if(mode==='own'){st.step=N;save()}const items=[],bin=[];let k=0;
+ const rot=()=>(((k*53)%9)-4)*.8, pins=['#e11d48','#2E4BE0','#FFCF3A','#1FA36B','#111'];
+ CH.forEach((c,i)=>{const [p,n,t]=st.a[i];
+  if(c.cards){p.forEach((j,x)=>{const d=c.cards[j];items.push(`<button class="pol" data-act="edit" data-i="${i}" style="--i:${k};--r:${rot()}deg;--fx:${k%2?60:-60}px"><i class="pin" style="--c:${pins[k%5]}"></i><img loading="lazy" src="th/${d[0]}.jpg" alt=""><span class="l1">${esc(c.k)}</span><span class="l2">${esc(d[1])}</span>${x===0&&t.trim()?`<span class="cm">${esc(t.trim())}</span>`:''}</button>`);k++});
+   if(!p.length&&t.trim()){items.push(`<button class="stick" data-act="edit" data-i="${i}" style="--i:${k};--r:${rot()}deg;--fx:${k%2?60:-60}px;--c:#FFE66B"><i class="pin" style="--c:${pins[k%5]}"></i><span class="l1">${esc(c.k)}</span><span class="l2">${esc(t.trim())}</span></button>`);k++}
+   n.forEach(j=>bin.push(`<span><img loading="lazy" src="th/${c.cards[j][0]}.jpg" alt=""></span>`))}
+  else if(p.length){items.push(`<button class="stick" data-act="edit" data-i="${i}" style="--i:${k};--r:${rot()}deg;--fx:${k%2?60:-60}px;--c:${['#FFE66B','#FFB3D4','#B8E6FF'][i%3]}"><i class="pin" style="--c:${pins[k%5]}"></i><span class="l1">${esc(c.k)}</span><span class="l2${c.fonts?' fw':''}"${c.fonts&&p.length?` style="font-family:${c.fo[p[0]][0]},cursive;font-weight:${c.fo[p[0]][2]}"`:''}>${p.map(j=>esc(c.opts[j])).join(' + ')}</span>${t.trim()?`<span class="cm">${esc(t.trim())}</span>`:''}</button>`);k++}});
+ const own=mode==='own';
+ show(`<div class="banner"><h2>${own?'Уверена в своём выборе?':'Выбор сделан'}</h2><p>${own?'Тапни любую карточку, чтобы заменить.':'Так выглядит доска с выбранными карточками.'}</p></div>
+ <div class="board"><div class="bgrid">${items.join('')}</div>${bin.length?`<div class="bin"><h3>Точно нет</h3><div>${bin.join('')}</div></div>`:''}</div>
+ ${own?`<div class="note"><label for="fin">Что ещё важно? Любая мысль про ролик.</label><textarea id="fin" maxlength="300" placeholder="необязательно">${esc(st.f)}</textarea></div>`:st.f.trim()?`<div class="note"><label>Что ещё важно</label><p class="hand" style="font-size:24px;line-height:1.05;color:#2b3fb5">${esc(st.f.trim())}</p></div>`:''}
+ <div class="after" id="after">${own?'<button class="btn alt" data-act="sure">Да, это моё</button>':''}</div>`,DARK);
+ if(!own)after(false)}
+function after(fresh){const el=document.getElementById('after'),own=mode==='own';
+ el.innerHTML=`${own?`<div class="share"><h3>Готово</h3><p>Скопируй ссылку и отправь её обратно. По ней откроется эта доска со всем, что ты выбрала.</p><button class="btn sm" data-act="copylink">Скопировать ссылку</button></div>`:''}
+ <div class="share" style="transform:rotate(.5deg)"><h3>Текстом</h3><p>То же самое списком, из него собирается ТЗ на ролик.</p><pre class="tz" id="tz">${esc(brief())}</pre><div style="margin-top:14px"><button class="btn sm alt" data-act="copytz">Скопировать текст</button></div></div>
+ ${own?'':'<button class="link" data-act="reset">Пройти самому с нуля</button>'}`;
+ if(fresh){confetti();el.scrollIntoView({behavior:'smooth',block:'start'})}}
+function confetti(){const cs=['#FF2E93','#FFCF3A','#2E4BE0','#1FA36B','#F2452E','#fff'];for(let i=0;i<46;i++){const d=document.createElement('i');d.className='conf';d.style.cssText=`left:${Math.random()*100}vw;background:${cs[i%6]};animation-duration:${1.6+Math.random()*1.6}s;animation-delay:${Math.random()*.5}s;transform:rotate(${Math.random()*90}deg)`;document.body.appendChild(d);setTimeout(()=>d.remove(),4200)}}
+
+/* события */
+document.addEventListener('input',e=>{if(e.target.id==='cm'){st.a[st.step][2]=e.target.value;save();document.getElementById('next').disabled=!done(st.step)}
+ if(e.target.id==='fin'){st.f=e.target.value;save();const tz=document.getElementById('tz');if(tz)tz.textContent=brief()}});
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b){if(e.target===view)closeCard();return}
+ const act=b.dataset.act,i=st.step;
+ if(act==='start'){if(st.step>=N)board();else chapter(st.step>=0?st.step:0)}
+ else if(act==='reset'){mode='own';st=blank();save();history.replaceState(null,'',location.href.split('#')[0]);cover()}
+ else if(act==='open')openCard(i,+b.dataset.j);
+ else if(act==='close')closeCard();
+ else if(act==='vnav'){const n=CH[vi].cards.length;openCard(vi,(vj+ +b.dataset.d+n)%n)}
+ else if(act==='vyes'){toggle(vi,vj,0);closeCard()}
+ else if(act==='vno'){toggle(vi,vj,1);closeCard()}
+ else if(act==='opt'){toggle(i,+b.dataset.j,0);paint(i)}
+ else if(act==='back'){if(fromBoard){fromBoard=false;board()}else if(i>0)chapter(i-1);else cover()}
+ else if(act==='next'){if(!done(i))return;if(fromBoard){fromBoard=false;board()}else if(i<N-1)chapter(i+1);else board()}
+ else if(act==='edit'){if(mode!=='own')return;fromBoard=true;chapter(+b.dataset.i)}
+ else if(act==='sure')after(true);
+ else if(act==='copylink')copy(linkFor(await pack()),b);
+ else if(act==='copytz')copy(brief(),b)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&view.classList.contains('on'))closeCard()});
+
+(async function init(){const h=decodeURIComponent(location.hash.slice(1));
+ if(h){const o=await unpack(h);if(o){mode='view';st=o;st.step=N;board();return}}
+ if(st.step===N)board();else cover()})();
+</script>
+</body>
+</html>
