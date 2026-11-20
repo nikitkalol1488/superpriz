@@ -293,9 +293,8 @@ function board(){if(mode==='own'){st.step=N;save()}const items=[],bin=[];let k=0
  <div class="after" id="after">${own?'<button class="btn alt" data-act="sure">Да, это моё</button>':''}</div>`,DARK);
  if(!own)after(false)}
 function after(fresh){const el=document.getElementById('after'),own=mode==='own';
- el.innerHTML=`${own?`<div class="share"><h3>Готово</h3><p>Скопируй ссылку и отправь её обратно. По ней откроется эта доска со всем, что ты выбрала.</p><button class="btn sm" data-act="copylink">Скопировать ссылку</button></div>`:''}
- <div class="share" style="transform:rotate(.5deg)"><h3>Текстом</h3><p>То же самое списком, из него собирается ТЗ на ролик.</p><pre class="tz" id="tz">${esc(brief())}</pre><div style="margin-top:14px"><button class="btn sm alt" data-act="copytz">Скопировать текст</button></div></div>
- ${own?'':'<button class="link" data-act="reset">Пройти самому с нуля</button>'}`;
+ el.innerHTML=own?`<div class="share"><h3>Готово</h3><p>Скопируй ссылку и отправь её обратно.</p><button class="btn sm" data-act="copylink">Скопировать ссылку</button></div>`
+ :`<div class="share"><h3>Текстом</h3><p>Тот же выбор списком, из него собирается ТЗ на ролик.</p><pre class="tz" id="tz">${esc(brief())}</pre><div style="margin-top:14px"><button class="btn sm alt" data-act="copytz">Скопировать текст</button></div></div><button class="link" data-act="reset">Пройти самому с нуля</button>`;
  if(fresh){confetti();el.scrollIntoView({behavior:'smooth',block:'start'})}}
 function confetti(){const cs=['#FF2E93','#FFCF3A','#2E4BE0','#1FA36B','#F2452E','#fff'];for(let i=0;i<46;i++){const d=document.createElement('i');d.className='conf';d.style.cssText=`left:${Math.random()*100}vw;background:${cs[i%6]};animation-duration:${1.6+Math.random()*1.6}s;animation-delay:${Math.random()*.5}s;transform:rotate(${Math.random()*90}deg)`;document.body.appendChild(d);setTimeout(()=>d.remove(),4200)}}
 
